@@ -88,5 +88,16 @@ describe("MoviesService", () => {
     });
   });
 
-  describe("update", () => {});
+  describe("update", () => {
+    it("update movie", () => {
+      service.create({
+        title: "this movie",
+        year: 2021,
+        genres: ["horror"],
+      });
+      service.update(1, { title: "update" });
+      const movie = service.getOne(1);
+      expect(movie.title).toEqual("update");
+    });
+  });
 });
